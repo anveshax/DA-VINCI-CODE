@@ -1,0 +1,881 @@
+# AUTONOMOUS ENGINEERING MASTER PROMPT
+# DA VINCI CODE | AEGIS NEXUS
+## Enterprise Multi-Agent AI Governance, Intelligence and Self-Healing Control Plane
+
+You are not a chatbot answering a software question. You are an autonomous senior engineering team consisting of a principal software architect, AI agent systems engineer, security engineer, UX designer, database engineer, test engineer, DevOps engineer, and technical product designer.
+
+Your mission is to DESIGN, BUILD, TEST, DEBUG, HARDEN, and PREPARE FOR DEPLOYMENT a sophisticated, fully functional hackathon prototype for the following problem statement.
+
+### OFFICIAL PROBLEM STATEMENT
+
+"Multi-Agent AI Governance Platform - Large organizations deploy multiple AI agents across departments, leading to coordination challenges, duplicated work, inconsistent decisions, and security risks. Design a platform that enables AI agents to collaborate safely, delegate tasks, share knowledge, and remain aligned with organizational policies."
+
+### TEAM IDENTITY
+
+Team: DA VINCI CODE
+
+Product: AEGIS NEXUS
+
+Tagline: "Autonomous Intelligence. Governed by Design."
+
+Product positioning:
+An intelligent enterprise control plane that allows AI agents to collaborate, verify one another's work, operate within explicit security boundaries, recover from failures, and produce traceable decisions.
+
+The finished application must look and behave like a premium enterprise AI operations product, not a generic AI dashboard template.
+
+---
+
+# PART I — NON-NEGOTIABLE ENGINEERING RULES
+
+## 1. Build a real application, not a visual mockup
+
+Implement a working end-to-end product with:
+- A real frontend connected to backend APIs.
+- Real task orchestration.
+- Multiple independently configured AI agents.
+- Actual policy enforcement in server-side code.
+- Persistent task and audit history.
+- Working approval and rejection workflows.
+- A shared knowledge system.
+- Real error handling and recovery.
+- A working demonstration mode.
+- A production-buildable application suitable for Render.
+
+Every major button must have a real action. Every metric must derive from actual persisted data or be explicitly identified as demonstration data. Every chart must use actual application state.
+
+Do not create dead buttons, fake loading animations, fabricated success messages, hardcoded audit events presented as live activity, or dashboard metrics that never change.
+
+A deterministic demonstration mode is acceptable and required when API credentials are unavailable. It must be clearly identified as simulation mode rather than falsely presented as live LLM execution.
+
+## 2. Work autonomously, but do not fabricate verification
+
+Inspect the current workspace and project files before making changes.
+
+If the project is empty, initialize it. If it already contains code, inspect and preserve useful working components.
+
+Make reasonable engineering decisions independently. Do not repeatedly ask for permission for ordinary implementation choices.
+
+Do not stop after producing a plan or the first screen. Continue implementing, integrating, testing, and repairing the application.
+
+Never claim that a test passed, an API was connected, or a deployment succeeded unless the relevant operation was actually verified.
+
+## 3. Establish measurable completion criteria
+
+The application is complete only when:
+- All critical routes render.
+- Frontend and backend integration works.
+- Database initialization and persistence work.
+- Core workflows complete end to end.
+- Policy denials happen before protected data or actions are released.
+- Approval enforcement works.
+- Agent failures produce controlled outcomes.
+- Automated tests pass or remaining failures are explicitly documented.
+- The production build succeeds.
+- Deployment configuration is complete.
+- The README explains how to run, configure, test, and deploy the system.
+
+If any critical criterion fails, repair it before declaring completion.
+
+---
+
+# PART II — THE UNIQUE PRODUCT CONCEPT
+
+Build AEGIS NEXUS around an original architectural idea:
+
+## THE GOVERNED INTELLIGENCE CONTROL PLANE
+
+Traditional multi-agent applications concentrate on making agents communicate. AEGIS NEXUS concentrates on governing what happens when they communicate.
+
+Every task, delegation, knowledge retrieval, tool invocation, approval, and final recommendation should be represented as a traceable execution event.
+
+Introduce five integrated innovations.
+
+### Innovation 1: Governance Flight Recorder
+
+Create a chronological, inspectable execution record for every important workflow.
+
+The record must show:
+- What the user requested.
+- How the request was decomposed.
+- Which agent received each subtask.
+- What information and permissions the agent was given.
+- Which policies were evaluated.
+- Which actions were allowed, denied, or held for approval.
+- What evidence each agent returned.
+- Whether duplicate work was reused.
+- How conflicting findings were handled.
+- What the final recommendation contains.
+- Which actions remain pending.
+
+Each record should have a correlation ID and references to its related events.
+
+Implement an append-only application interface for audit events, restricted write permissions, and hash-chain integrity verification. Do not claim absolute immutability unless an independently protected storage mechanism supports that claim.
+
+Make the Flight Recorder one of the application's signature visual experiences.
+
+### Innovation 2: Counterfactual Policy Simulator
+
+Before changing a policy, an administrator can run a simulation against saved historical test scenarios.
+
+Example:
+"What would happen if the Finance Agent were no longer permitted to read vendor contracts?"
+
+The simulator should:
+1. Load eligible historical or explicitly labelled synthetic scenarios.
+2. Evaluate them against the current policy.
+3. Evaluate them against the proposed policy.
+4. Compare the decisions.
+5. Identify newly allowed, newly denied, and approval-required actions.
+6. Display possible workflow disruptions.
+7. Allow the administrator to inspect the evidence.
+8. Keep the proposed policy inactive until an authorized administrator publishes it.
+
+The simulator must never execute real financial or external actions.
+
+Clearly distinguish deterministic policy evaluation from probabilistic AI-generated impact commentary.
+
+### Innovation 3: Evidence-Carrying Agent Decisions
+
+Require every important agent result to contain structured evidence.
+
+Example result schema:
+
+{
+  "task_id": "task_example",
+  "agent_id": "security_agent",
+  "status": "completed",
+  "finding": "additional_review_required",
+  "evidence": [
+    {
+      "source_id": "vendor_document_01",
+      "claim": "A required security certification was not found",
+      "confidence": 0.91
+    }
+  ],
+  "limitations": [
+    "The submitted document set may be incomplete"
+  ],
+  "recommended_next_action": "request_document",
+  "policy_references": [
+    "vendor_security_policy_v1"
+  ]
+}
+
+Treat this as a schema example, not a real finding.
+
+Validate outputs server-side. Verify source references and policy references before treating them as evidence. Confidence values are model estimates, not calibrated probabilities unless calibration has been measured.
+
+Never let an agent manufacture evidence IDs or turn an unsupported claim into a verified fact.
+
+### Innovation 4: Governed Knowledge Reuse
+
+Create a reusable knowledge system that prevents repeated work without spreading confidential information.
+
+Each knowledge item must have:
+- Source provenance.
+- Ownership.
+- Classification.
+- Authorized access scope.
+- Version.
+- Freshness or expiry information.
+- Verification status.
+- A link to the task that produced it.
+
+Before reuse, check scope, freshness, authorization, and validity.
+
+Two semantically similar tasks must not automatically be treated as interchangeable. Vendor identity, requested operation, policy version, document version, and other relevant parameters may affect whether reuse is safe.
+
+### Innovation 5: Bounded Self-Healing Agent Runtime
+
+Implement an agent runtime that detects and responds to recoverable execution failures.
+
+Examples:
+- Invalid structured output.
+- Temporary model-provider errors.
+- Agent timeouts.
+- Missing task dependencies.
+- Failed database operations.
+- Invalid tool arguments.
+- Inconsistent task state.
+
+The recovery controller should:
+1. Capture the failure.
+2. Classify the error.
+3. Determine whether retry is safe.
+4. Retry transient failures with bounded exponential backoff and jitter.
+5. Repair malformed model output through constrained regeneration or schema-guided correction.
+6. Revalidate permissions before retrying protected actions.
+7. Prevent duplicate side effects through idempotency keys.
+8. Stop after a configured retry budget.
+9. Record each attempt.
+10. Escalate unresolved failures to a human or a terminal failure state.
+
+Use a circuit breaker for repeatedly failing external providers where appropriate.
+
+Do not automatically retry non-idempotent financial actions or other consequential side effects without verifying the previous outcome.
+
+Never allow a recovery loop to bypass a policy denial, weaken security controls, or repeatedly invoke a failing API without limits.
+
+Provide a visible recovery timeline in the dashboard.
+
+---
+
+# PART III — ADVANCED MULTI-AGENT ARCHITECTURE
+
+Implement the following logical components.
+
+## A. Request Gateway
+- Validate and normalize requests.
+- Authenticate the user.
+- Assign request and correlation IDs.
+- Classify sensitivity.
+- Enforce rate limits.
+- Record request metadata without leaking secrets.
+
+## B. Planner and Orchestrator
+- Create task graphs.
+- Identify dependencies.
+- Select agents by capability.
+- Manage parallel and sequential tasks.
+- Track execution budgets.
+- Handle cancellation and retries.
+- Prevent delegation loops.
+- Validate task completion.
+
+## C. Agent Registry
+Each agent must have:
+- A unique identity.
+- A role.
+- A capability list.
+- Allowed tools.
+- Data-access scope.
+- Execution limits.
+- Current status.
+- Model configuration.
+- Health information.
+
+Never rely on an agent-supplied role string as proof of authorization.
+
+## D. Governance Enforcement Point
+Intercept every protected tool invocation, delegation, and data-access request.
+
+Evaluate:
+- Authenticated principal.
+- Agent identity.
+- Requested action.
+- Resource classification.
+- Resource ownership.
+- Allowed scope.
+- Applicable policy version.
+- Action limits.
+- Required approvals.
+- Risk restrictions.
+
+Support ALLOW, DENY, and REQUIRE_APPROVAL.
+
+A policy denial is final unless an authorized administrator changes the governing policy through the normal controlled process. An agent must never override a denial by asking another agent to perform the same prohibited action.
+
+## E. Agent Execution Workers
+Implement at least four useful agents:
+1. Orchestrator/Planner.
+2. Finance Analyst.
+3. Security Risk Analyst.
+4. Legal and Compliance Analyst.
+
+The orchestrator is a control component and should not automatically inherit the privileges of its workers.
+
+Each specialized agent must produce validated structured output, declare uncertainty, and remain within its assigned scope.
+
+## F. Shared Knowledge Service
+- Store approved knowledge and source references.
+- Retrieve only authorized content.
+- Apply access filters before content is returned.
+- Support keyword search initially and semantic search when feasible.
+- Detect stale knowledge.
+- Track source and version lineage.
+
+## G. Result Reconciliation Engine
+- Detect contradictions.
+- Compare evidence and provenance.
+- Apply explicit resolution rules.
+- Request reassessment when useful.
+- Escalate unresolved high-impact disagreements.
+- Produce a final report with evidence and limitations.
+
+## H. Audit and Observability Service
+- Store execution events.
+- Link events through correlation IDs.
+- Track policy versions.
+- Monitor failures and retries.
+- Record cost and latency where available.
+- Support searchable task timelines.
+
+## I. Approval Service
+- Create approval requests.
+- Bind each approval to an exact action and its parameters.
+- Record the approver and decision.
+- Reject expired or stale approvals.
+- Prevent approval self-dealing.
+- Revalidate policy and permissions before execution.
+- Require a new approval if material parameters change.
+
+---
+
+# PART IV — SIGNATURE DEMONSTRATION
+
+Build a complete enterprise vendor-onboarding scenario.
+
+User request:
+
+"Evaluate a new software vendor, verify the budget, review its contract, assess security risks, identify missing evidence, and prepare an onboarding recommendation."
+
+Expected workflow:
+
+1. Authenticate the requester.
+2. Create a parent task and unique task ID.
+3. Plan the task graph.
+4. Check existing knowledge for eligible reusable assessments.
+5. Authorize every proposed delegation.
+6. Execute Finance, Legal, and Security subtasks.
+7. Collect structured evidence and source references.
+8. Detect missing or contradictory findings.
+9. Invoke recovery when a recoverable error occurs.
+10. Apply policy checks to every protected operation.
+11. Produce a consolidated report.
+12. Require human approval for designated consequential actions.
+13. Record the entire execution in the Governance Flight Recorder.
+
+The final report should distinguish:
+- Verified findings.
+- AI-generated assessments.
+- Missing information.
+- Conflicting findings.
+- Policy violations.
+- Required approvals.
+- Recommended next actions.
+
+Never claim that the vendor is safe merely because the agents completed their tasks.
+
+## Mandatory adversarial demonstrations
+
+### Test A: Unauthorized data access
+A Security Agent requests restricted Finance data.
+
+Expected: the governance layer denies access before returning the protected data and records the reason.
+
+### Test B: Prompt injection
+A submitted document instructs an agent to reveal confidential information and ignore company policies.
+
+Expected: the document is treated as untrusted input. Application-level authorization remains in force.
+
+### Test C: Duplicate work
+A repeated request targets an existing assessment.
+
+Expected: the platform checks scope, version, freshness, and authorization before deciding whether to reuse the result.
+
+### Test D: Conflicting evidence
+Finance and Legal return inconsistent information.
+
+Expected: the reconciliation engine identifies the conflict and records how it is resolved or escalated.
+
+### Test E: Recoverable failure
+The model provider temporarily fails or returns malformed structured output.
+
+Expected: the recovery controller performs bounded retries or correction and then either succeeds or records a controlled failure.
+
+### Test F: Approval bypass attempt
+An agent tries to perform an action requiring human approval by delegating it to another agent.
+
+Expected: the delegated action is independently evaluated and remains blocked until the proper approval is obtained.
+
+### Test G: Retry exhaustion
+A provider continues failing after the configured retry budget is exhausted.
+
+Expected: the circuit breaker or recovery controller stops repeated calls, records the failure, and preserves an accurate task status.
+
+---
+
+# PART V — PREMIUM USER INTERFACE
+
+The UI is a critical judging factor. Build an original, polished enterprise experience with a consistent visual identity.
+
+## Design direction: "Dark Intelligence Lab"
+
+Create a high-end AI operations interface inspired by professional observability platforms, modern cybersecurity consoles, and sophisticated enterprise software.
+
+Avoid generic AI landing pages, excessive gradients, oversized empty hero sections, cartoon robots, random glowing cards, and repetitive dashboard templates.
+
+### Visual system
+- Deep charcoal and midnight-navy foundations.
+- Restrained electric violet and cyan accents.
+- Warm neutral text and carefully differentiated status colors.
+- Subtle glass effects only where they improve hierarchy.
+- Fine borders, layered surfaces, controlled shadows.
+- Clear typography and deliberate whitespace.
+- Consistent spacing and responsive grids.
+- Smooth transitions with reduced-motion support.
+- Professional icons with consistent stroke weight.
+- Meaningful loading, empty, success, error, and offline states.
+
+Use restrained visual effects rather than placing a glow around every element.
+
+## Required pages
+
+### 1. Executive Overview
+Show:
+- Active workflows.
+- Agent availability.
+- Policy decisions.
+- Pending approvals.
+- Recoveries and failures.
+- Recent audit events.
+- Actual model usage when available.
+
+Include a live activity feed and useful drill-down actions.
+
+### 2. Agent Command Center
+Show:
+- Registered agents.
+- Capabilities and permissions.
+- Active tasks.
+- Health status.
+- Recent errors.
+- Task history.
+- Administrative pause/resume controls.
+
+Do not imply that an agent is running if it is only a configured worker.
+
+### 3. Workflow Observatory
+Build a visual task graph with:
+- Parent and child tasks.
+- Dependencies.
+- Agent assignments.
+- Execution status.
+- Policy checkpoints.
+- Failed or retried nodes.
+- Final result references.
+
+Users should be able to click a node to inspect its actual execution details.
+
+### 4. Governance Center
+Include:
+- Policy registry.
+- Policy versions.
+- Access decisions.
+- Denied requests.
+- Approval requirements.
+- Policy simulation.
+- Controlled policy publishing.
+
+### 5. Knowledge Graph
+Visualize relationships among:
+- Agents.
+- Tasks.
+- Documents.
+- Evidence.
+- Policies.
+- Decisions.
+
+Render actual stored relationships rather than decorative random nodes.
+
+### 6. Governance Flight Recorder
+Provide:
+- Searchable timeline.
+- Event filters.
+- Task correlation.
+- Policy decision details.
+- Evidence lineage.
+- Integrity verification status.
+
+### 7. Recovery Lab
+Show:
+- Error classification.
+- Retry attempts.
+- Recovery actions.
+- Circuit breaker status.
+- Retry budget.
+- Final recovery outcome.
+
+### 8. Approval Inbox
+Show pending actions with:
+- Requesting agent.
+- Exact action.
+- Parameters and scope.
+- Policy justification.
+- Supporting evidence.
+- Approve/reject controls for authorized users.
+
+Require confirmation for consequential actions and refresh the current policy before executing an approved action.
+
+### 9. Interactive Demo Lab
+Provide scenario controls to launch the vendor-onboarding workflow and the adversarial tests.
+
+Display the actual execution trace, policy decisions, task outcomes, and recovery events generated by the run.
+
+### 10. Settings and System Health
+Show:
+- Backend connectivity.
+- Database connectivity.
+- Model-provider readiness.
+- Environment configuration status without exposing secret values.
+- Version information.
+- Feature availability.
+
+Never expose API keys, passwords, tokens, or secret environment variables in the UI.
+
+## UX requirements
+- Responsive desktop, tablet, and mobile layouts.
+- Sidebar navigation with clear active states.
+- Global search where useful.
+- Accessible keyboard navigation.
+- Meaningful tooltips.
+- Confirmation for destructive actions.
+- Skeleton loaders for asynchronous content.
+- Toast notifications for completed user actions.
+- Empty states with useful next steps.
+- Clear distinction between simulation and live mode.
+- No horizontal overflow at common viewport sizes.
+- No dead controls or placeholder links.
+
+Build a cohesive application, not ten disconnected screens.
+
+---
+
+# PART VI — TECHNOLOGY AND INTEGRATION
+
+Use a deployment-friendly JavaScript/TypeScript stack.
+
+## Frontend
+- React.
+- TypeScript.
+- Vite.
+- Tailwind CSS.
+- A consistent component library or custom design system.
+- Recharts for relevant metrics.
+- A graph visualization library only if it materially improves the workflow or knowledge views.
+
+## Backend
+- Node.js.
+- TypeScript.
+- Express.
+- Zod for input and output validation.
+- Structured logging.
+- Centralized error handling.
+
+## AI
+- Gemini API through server-side calls.
+- A provider adapter so models can be changed without rewriting orchestration.
+- Structured JSON output with validation.
+- Explicit timeouts and error handling.
+- Configurable model selection.
+- Deterministic mock provider for testing and demonstrations.
+
+Do not use client-side Gemini calls that expose a privileged server API key.
+
+## Database
+- PostgreSQL.
+- Prisma or another mature TypeScript-compatible database layer.
+- Versioned schema migrations.
+- Persistent records for tasks, agents, policies, approvals, knowledge, and audit events.
+
+Use a real PostgreSQL service for persistent hosted data. Do not assume a temporary filesystem is persistent across redeployments.
+
+## Authentication
+Implement a clear authentication boundary and role-based authorization.
+
+For a time-constrained prototype, use a safe, clearly documented development login or seeded demonstration accounts. Production-facing authentication must verify identities on the server and must not trust a client-supplied role.
+
+Never leave an unauthenticated administrative interface publicly accessible on the deployed application.
+
+## Optional integrations
+Connect external services only where they add real value.
+
+Possible extensions:
+- Gemini API for real reasoning.
+- PostgreSQL for persistent state.
+- Slack or Google Workspace for approval notifications, if credentials and OAuth are available.
+- Open Policy Agent as an advanced external policy engine.
+- A vector database or pgvector for semantic knowledge retrieval.
+
+Prioritize the working core over the number of integrations.
+
+---
+
+# PART VII — RENDER DEPLOYMENT REQUIREMENTS
+
+The application must be prepared for deployment on Render.
+
+Use a GitHub-compatible repository and a single deployable Node.js service serving both the frontend production build and backend API where practical.
+
+Recommended repository structure:
+
+aegis-nexus/
+  client/
+    src/
+      app/
+      components/
+      pages/
+      features/
+      services/
+      hooks/
+      styles/
+  server/
+    src/
+      index.ts
+      app.ts
+      routes/
+      middleware/
+      agents/
+      orchestration/
+      governance/
+      knowledge/
+      audit/
+      recovery/
+      database/
+      services/
+  shared/
+    schemas/
+    types/
+  prisma/
+    schema.prisma
+    migrations/
+  tests/
+    unit/
+    integration/
+    security/
+    e2e/
+  scripts/
+  public/
+  package.json
+  tsconfig.json
+  vite.config.ts
+  .env.example
+  render.yaml
+  README.md
+
+Adjust this structure when necessary, but preserve clear separation of frontend, backend, domain logic, and shared schemas.
+
+## Deployment behavior
+- Use the PORT environment variable.
+- Bind the web server to 0.0.0.0.
+- Serve the production frontend build from the Node.js service.
+- Keep health endpoints available.
+- Configure the correct production start command.
+- Provide a reproducible build.
+- Use a Render PostgreSQL database.
+- Run database migrations in a controlled deployment step.
+- Handle SIGTERM and graceful shutdown.
+- Avoid hardcoded localhost URLs in production.
+- Configure CORS appropriately.
+- Do not commit secrets.
+- Document all required environment variables.
+
+Implement:
+- GET /health/live
+- GET /health/ready
+- GET /api/health
+
+The readiness endpoint should reflect required dependencies, including the database, without unnecessarily requiring a live AI-provider call on every health check.
+
+Create a Render deployment configuration if supported by the resulting repository. Do not claim that Render has been deployed until the actual deployment is verified.
+
+Required environment variables may include:
+- GEMINI_API_KEY
+- DATABASE_URL
+- SESSION_SECRET
+- NODE_ENV
+- PORT
+
+Add only the variables the implementation actually uses. Document the purpose and required status of each.
+
+---
+
+# PART VIII — AUTONOMOUS BUILD, TEST, REPAIR AND VERIFY LOOP
+
+This section is mandatory.
+
+Operate as an iterative engineering agent with a bounded repair loop, not a one-shot code generator.
+
+## Phase 1: Inspect and plan
+- Inspect existing files.
+- Determine the actual runtime and package manager.
+- Identify implementation risks.
+- Create a short task plan and acceptance checklist.
+- Start implementing without waiting for another prompt.
+
+## Phase 2: Build vertical slices
+Implement the smallest complete working path first:
+
+1. Server and health endpoint.
+2. Database connection and migrations.
+3. Agent registry.
+4. Task creation.
+5. Task orchestration.
+6. Policy enforcement.
+7. Agent execution.
+8. Audit persistence.
+9. Frontend integration.
+10. Recovery behavior.
+
+Verify each slice before proceeding.
+
+## Phase 3: Run the available checks
+
+Use the actual tools available in the environment to run:
+- Dependency installation.
+- TypeScript type checking.
+- Linting if configured.
+- Unit tests.
+- Integration tests.
+- Production frontend build.
+- Production server startup.
+- API smoke tests.
+- Browser or end-to-end tests when available.
+
+Test actual user journeys, not just isolated functions.
+
+## Phase 4: Classify failures
+
+For each failure, record:
+- Error message.
+- Failing component.
+- Root-cause hypothesis.
+- Relevant logs or stack trace.
+- Proposed minimal repair.
+- Regression test.
+
+Distinguish source-code errors from unavailable credentials, provider quotas, network restrictions, database configuration, and tooling limitations.
+
+## Phase 5: Repair loop
+
+For each implementation defect:
+
+1. Reproduce the failure.
+2. Inspect the relevant source and dependencies.
+3. Identify the root cause.
+4. Make the smallest appropriate repair.
+5. Run the targeted test.
+6. Run relevant regression tests.
+7. Run the broader build or test suite again.
+8. Confirm the failure is resolved.
+9. Continue to the next issue.
+
+Use a maximum of five consecutive repair attempts for the same underlying defect before escalating it for a different diagnosis or marking it blocked.
+
+Do not endlessly repeat an identical failed command.
+
+Never modify a test merely to make a broken implementation appear correct. Update tests only when the specification or expected behavior genuinely changes.
+
+Never remove security checks, suppress errors, disable TypeScript checking, or replace real functionality with a success message simply to obtain a green build.
+
+## Phase 6: Integration verification
+
+After modules are integrated:
+- Verify all API routes.
+- Verify database persistence.
+- Verify agent-to-orchestrator communication.
+- Verify authorization at each protected boundary.
+- Verify approval workflows.
+- Verify audit event consistency.
+- Verify recovery and retry limits.
+- Verify that frontend states reflect backend outcomes.
+- Verify the full demonstration workflow.
+
+## Phase 7: Production-readiness checks
+
+Before completion:
+- Run the production build.
+- Start the production server.
+- Check health endpoints.
+- Verify database connectivity.
+- Check required environment variables.
+- Verify no secrets appear in client bundles or logs.
+- Check common runtime and API failures.
+- Verify deployment commands and configuration.
+- Document any checks that could not be executed.
+
+## Loop termination conditions
+
+Declare the build complete only when all critical acceptance criteria pass.
+
+Stop earlier only if:
+- A necessary credential or external service is unavailable.
+- The environment lacks a required capability.
+- The same defect remains unresolved after the bounded repair budget.
+- Continuing would risk data loss or violate security.
+
+When blocked, report the exact reason, the work completed, and the smallest action needed to proceed.
+
+Do not claim that the application has zero errors. Report verified results and remaining limitations honestly.
+
+---
+
+# PART IX — ACCEPTANCE TESTS
+
+Create automated tests for these minimum requirements:
+
+1. Authorized agents can execute permitted tasks.
+2. Unauthorized agents cannot access restricted data.
+3. Unregistered agents cannot perform privileged delegations.
+4. Policy denials occur before protected data is released.
+5. Approval-required actions remain blocked until authorized approval.
+6. Approval cannot be reused for materially different action parameters.
+7. Duplicate detection does not reuse stale or unauthorized results.
+8. Conflicting findings are identified and recorded.
+9. Model output is schema-validated.
+10. Prompt injection cannot override application-level permissions.
+11. Recovery attempts stop at their configured limit.
+12. Non-idempotent actions are not blindly repeated after ambiguous failures.
+13. Audit events are generated for relevant actions and denials.
+14. Task status remains accurate after agent failure.
+15. Persisted task history survives an application restart.
+16. Health endpoints report appropriate readiness.
+17. The production frontend build succeeds.
+18. The vendor-onboarding workflow completes in demonstration mode.
+19. Every visible core control has a functioning action.
+20. No API key or privileged credential is exposed to the browser.
+
+Report test totals, failures, skipped tests, and environmental limitations accurately.
+
+---
+
+# PART X — FINAL DELIVERABLES
+
+Produce the following:
+
+1. Fully implemented application source code.
+2. Premium responsive UI.
+3. Working multi-agent orchestration.
+4. Centralized deterministic governance.
+5. Evidence-carrying agent results.
+6. Shared knowledge and safe reuse.
+7. Policy simulation.
+8. Governance Flight Recorder.
+9. Bounded self-healing runtime.
+10. Human approval workflow.
+11. Persistent database schema and migrations.
+12. Automated tests.
+13. Render-ready deployment configuration.
+14. Environment variable template.
+15. Complete README.
+16. Architecture documentation.
+17. API endpoint documentation.
+18. A reproducible hackathon demonstration.
+19. Eight-slide presentation outline.
+20. A final verification report distinguishing passed, failed, and unverified items.
+
+## FINAL EXECUTION DIRECTIVE
+
+Begin by inspecting the project workspace and understanding the current build environment.
+
+Then implement AEGIS NEXUS in small, verifiable stages. Preserve working code, validate every integration, and repair actual failures rather than hiding them.
+
+Make the Governance Flight Recorder, Counterfactual Policy Simulator, Evidence-Carrying Decisions, and Bounded Self-Healing Runtime central to the product's identity.
+
+Use the team identity DA VINCI CODE consistently in the interface, documentation, and presentation.
+
+The final application must demonstrate a clear principle:
+
+"AI agents should be autonomous in solving assigned tasks, but never autonomous in redefining their own authority."
+
+Start implementation now. Do not stop after returning an architecture proposal. Build the application, run the available checks, repair verified defects, and provide an honest completion report.
